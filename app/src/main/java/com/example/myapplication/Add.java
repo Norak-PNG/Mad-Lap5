@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast; // Import Toast
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -51,13 +51,10 @@ public class Add extends Fragment {
             String remark_send = remark.getText().toString();
             String email = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
 
-            // 4. Call your new generator functions
             String generatedId = generateUniqueId();
             String currentDateString = generateIso8601Date();
 
-            // You can now use these generated values
-            Log.d("GENERATOR", "Generated ID: " + generatedId);
-            Log.d("GENERATOR", "Generated Date: " + currentDateString);
+
 
             if (amount_send.isEmpty() || currency_send.isEmpty() || category_send.isEmpty()) {
                 Toast.makeText(getContext(), "Amount, Currency, and Category cannot be empty", Toast.LENGTH_SHORT).show();
@@ -79,26 +76,19 @@ public class Add extends Fragment {
         });
     }
     private void sendPostToServer(Post post) {
-        // Get API service instance
         JsonPlaceholderApi apiService = RetrofitClient.getRetrofitInstance().create(JsonPlaceholderApi.class);
 
-        // Create the call using the new createPost method
         Call<Post> call = apiService.postData(post);
 
-        // Enqueue the call to run asynchronously
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<Post> call, @NonNull Response<Post> response) {
-                if (!isAdded()) return; // Check if fragment is still active
+                if (!isAdded()) return;
 
                 if (response.isSuccessful()) {
-                    // Server responded with success (e.g., status 201 Created)
                     Toast.makeText(getContext(), "Expense Added Successfully!", Toast.LENGTH_SHORT).show();
-                    assert response.body() != null;
                     Log.d("ADD_FRAGMENT", "Post successful: " + response.body().toString());
-                    // Optionally, you can clear the EditText fields here
                 } else {
-                    // Server responded with an error code (4xx or 5xx)
                     Toast.makeText(getContext(), "Failed to add expense. Code: " + response.code(), Toast.LENGTH_SHORT).show();
                     Log.e("ADD_FRAGMENT", "API Error Code: " + response.code());
                 }
@@ -106,20 +96,17 @@ public class Add extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<Post> call, @NonNull Throwable t) {
-                if (!isAdded()) return; // Check if fragment is still active
-                // Network error (e.g., no internet, server down)
+                if (!isAdded()) return;
                 Toast.makeText(getContext(), "Network Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("ADD_FRAGMENT", "Network Failure: " + t.getMessage());
             }
         });
     }
 
-    // Function to generate a unique ID (UUID)
     private String generateUniqueId() {
         return UUID.randomUUID().toString();
     }
 
-    // Function to generate a date string in ISO 8601 format (UTC)
     private String generateIso8601Date() {
         SimpleDateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
         iso8601Format.setTimeZone(TimeZone.getTimeZone("UTC"));

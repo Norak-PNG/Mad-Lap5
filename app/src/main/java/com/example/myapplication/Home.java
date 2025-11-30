@@ -35,6 +35,11 @@ public class Home extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        TextView email_view = view.findViewById(R.id.name);
+        email_view.setText(String.format("Email: %s", email));
+
         Button logout = view.findViewById(R.id.logout);
         logout.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();

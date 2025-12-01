@@ -37,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
             } else if (itemId == R.id.view) {
                 replaceFragment(new View());
                 return true;
-            }
+            } else if (itemId == R.id.setting) {
+                replaceFragment(new Setting());
+                return true;
+        }
             return false;
         });
     }

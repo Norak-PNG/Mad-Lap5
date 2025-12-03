@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,9 +20,15 @@ import retrofit2.Response;
 
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.myapplication.JsonPlaceholderApi;
+import com.example.myapplication.Login;
+import com.example.myapplication.Post;
+import com.example.myapplication.R;
+import com.example.myapplication.RetrofitClient;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Home extends Fragment {
+public class HomeFrag extends Fragment {
 
 
     @Override

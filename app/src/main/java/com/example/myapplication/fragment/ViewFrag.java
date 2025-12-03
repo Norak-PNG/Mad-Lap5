@@ -1,6 +1,5 @@
-package com.example.myapplication;
+package com.example.myapplication.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +12,12 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.myapplication.JsonPlaceholderApi;
+import com.example.myapplication.Post;
+import com.example.myapplication.R;
+import com.example.myapplication.RecyclerViewAd;
+import com.example.myapplication.RetrofitClient;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class View extends Fragment {
+public class ViewFrag extends Fragment {
 
     // 1. Declare RecyclerView and the Adapter as member variables
     private RecyclerView recyclerView;

@@ -1,16 +1,17 @@
 package com.example.myapplication;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.myapplication.fragment.HomeFrag;
+import com.example.myapplication.fragment.SettingFrag;
+import com.example.myapplication.fragment.ViewFrag;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,23 +23,23 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
 
         if (savedInstanceState == null) {
-            replaceFragment(new Home());
+            replaceFragment(new HomeFrag());
         }
 
         bottomNav.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
             if (itemId == R.id.home) {
-                replaceFragment(new Home());
+                replaceFragment(new HomeFrag());
                 return true;
             } else if (itemId == R.id.add) {
                 replaceFragment(new Add());
                 return true;
             } else if (itemId == R.id.view) {
-                replaceFragment(new View());
+                replaceFragment(new ViewFrag());
                 return true;
             } else if (itemId == R.id.setting) {
-                replaceFragment(new Setting());
+                replaceFragment(new SettingFrag());
                 return true;
         }
             return false;

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.fragment;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,7 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class ViewDetail extends AppCompatActivity {
+import com.example.myapplication.R;
+
+public class ViewDetailFrag extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

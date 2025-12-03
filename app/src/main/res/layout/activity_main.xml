@@ -20,6 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#E2EAF4"
-        app:menu="@menu/nav_button" />
+        app:menu="@menu/nav_button"
+        app:itemRippleColor="@android:color/white"
+        app:itemActiveIndicatorStyle="@style/BottomNavFocusIndicator"/>
 
 </RelativeLayout>

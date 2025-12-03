@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="#F5F6F8"
-    tools:context=".Home">
+    tools:context=".fragment.HomeFrag">
 
 
 

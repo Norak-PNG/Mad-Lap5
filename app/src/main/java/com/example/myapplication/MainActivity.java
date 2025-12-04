@@ -1,12 +1,12 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.myapplication.fragment.AddFrag;
 import com.example.myapplication.fragment.HomeFrag;
 import com.example.myapplication.fragment.SettingFrag;
 import com.example.myapplication.fragment.ViewFrag;
@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity {
                 replaceFragment(new HomeFrag());
                 return true;
             } else if (itemId == R.id.add) {
-                replaceFragment(new Add());
+                replaceFragment(new AddFrag());
                 return true;
             } else if (itemId == R.id.view) {
                 replaceFragment(new ViewFrag());

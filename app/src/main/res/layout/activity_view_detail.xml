@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="#F5F6F8"
-    tools:context=".fragment.ViewDetailFrag">
+    tools:context=".fragment.ViewDetailActivity">
 
     <TextView
         android:id="@+id/textView6"

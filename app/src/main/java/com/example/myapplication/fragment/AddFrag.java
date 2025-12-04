@@ -1,5 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,10 +11,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.myapplication.JsonPlaceholderApi;
+import com.example.myapplication.NewCategoryActivity;
+import com.example.myapplication.Post;
+import com.example.myapplication.R;
+import com.example.myapplication.RetrofitClient;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
@@ -27,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Add extends Fragment {
+public class AddFrag extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,19 +49,31 @@ public class Add extends Fragment {
         Button add = view.findViewById(R.id.button);
         EditText amount = view.findViewById(R.id.editTextText1);
         EditText currency = view.findViewById(R.id.editTextText2);
-        EditText category = view.findViewById(R.id.editTextText3);
         EditText remark = view.findViewById(R.id.editTextText4);
+        Spinner category = view.findViewById(R.id.spinner2);
+        Button add_category = view.findViewById(R.id.button2);
+
+
+        String[] categories = {"Food", "Travel", "Shopping", "Other"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category.setAdapter(adapter);
+
+        add_category.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), NewCategoryActivity.class);
+            startActivity(intent);
+        });
 
         add.setOnClickListener(v -> {
             String amount_send = amount.getText().toString();
             String currency_send = currency.getText().toString();
-            String category_send = category.getText().toString();
+            String category_send = category.getSelectedItem().toString();
+            Log.d("ADD_FRAGMENT", category_send);
             String remark_send = remark.getText().toString();
             String email = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
 
             String generatedId = generateUniqueId();
             String currentDateString = generateIso8601Date();
-
 
 
             if (amount_send.isEmpty() || currency_send.isEmpty() || category_send.isEmpty()) {

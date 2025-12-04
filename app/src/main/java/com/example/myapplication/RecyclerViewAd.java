@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.fragment.ViewDetailFrag;
+import com.example.myapplication.fragment.ViewDetailActivity;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class RecyclerViewAd extends RecyclerView.Adapter<RecyclerViewAd.ViewHold
 
         holder.itemView.setOnClickListener(v -> {
             Log.d("RecyclerViewAd", "Item clicked at position: " + position);
-            Intent intent = new Intent(context, ViewDetailFrag.class);
+            Intent intent = new Intent(context, ViewDetailActivity.class);
             intent.putExtra("remark", expense.getRemark());
             intent.putExtra("category", expense.getCategory());
             intent.putExtra("amount", expense.getAmount());

@@ -6,7 +6,7 @@
     android:background="#F5F6F8"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".Add">
+    tools:context=".fragment.AddFrag">
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,25 +54,43 @@
     <TextView
         android:id="@+id/textView8"
         android:layout_width="340dp"
-        android:layout_marginTop="20dp"
         android:text="@string/category"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" />
 
-    <EditText
-        android:id="@+id/editTextText3"
+
+    <LinearLayout
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/for_edit_text"
-        android:hint="@string/enter_category"
-        android:padding="10dp"
-        android:ems="10"
-        android:inputType="text" />
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/for_edit_text"
+                />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/add"
+            android:drawableTint="@color/white"
+            android:backgroundTint="@color/black"
+            />
+
+    </LinearLayout>
+
+
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="340dp"
         android:layout_marginTop="20dp"
-
         android:layout_height="wrap_content"
         android:text="@string/remark" />
 

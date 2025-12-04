@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".NewCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".fragment.ViewDetailFrag"
             android:exported="false" />
         <activity
